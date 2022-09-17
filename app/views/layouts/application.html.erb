@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ChatroomTest</title>
+    <title>Chatroom-Test</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= action_cable_meta_tag %>
   </head>
 
   <body>
+   
+  <%= render partial: 'layouts/navbar' %>
+
+  <div class="container">
     <%= yield %>
+  </div>
   </body>
 </html>
