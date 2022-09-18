@@ -7,7 +7,8 @@ class RegistrationsController < ApplicationController
   
     def create 
       user = User.new(user_params)
-      if user.save
+      user.save
+      if user.persisted?
         session[:user_id] = user.id
         redirect_to chats_path
       else
@@ -16,8 +17,7 @@ class RegistrationsController < ApplicationController
     end
   
     private
-  
-      def user_params
-        params.require(:user).permit(:username)
-      end
+    def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    end
   end

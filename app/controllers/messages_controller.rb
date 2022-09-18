@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
         user: message.user.username
       head :ok
     end
+    
     # if message.persisted?
     #   render json: message
     # else
@@ -28,6 +29,6 @@ class MessagesController < ApplicationController
   private
 
     def message_params
-      params.require(:message).permit(:content, :chat_id, :user_id)
+      params.require(:message).permit(:content, :user_id, :chat_id)
     end
 end

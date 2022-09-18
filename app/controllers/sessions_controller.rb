@@ -20,10 +20,8 @@ class SessionsController < ApplicationController
       reset_session
       redirect_to root_path
     end
-  
     private
-  
-      def user_params
-        params.require(:user).permit(:username)
-      end
-  end
+    def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    end
+end
