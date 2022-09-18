@@ -6,9 +6,9 @@ class ChatsController < ApplicationController
   end
 
   def new
-    if request.referrer.split("/").last == "chatrooms"
-      flash[:notice] = nil
-    end
+  #   if request.referrer.split("/").last == "chatrooms"
+  #     flash[:notice] = nil
+  #   end
     @chat = Chat.new
   end
 
@@ -41,11 +41,12 @@ class ChatsController < ApplicationController
   def show
     @chat = Chat.find_by(slug: params[:slug])
     @message = Message.new
+   
   end
 
   private
 
     def chat_params
-      params.require(:chat).permit(:topic)
+      params.require(:chat).permit(:topic, :user_id)
     end
 end
