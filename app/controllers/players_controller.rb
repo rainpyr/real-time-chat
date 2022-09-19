@@ -6,7 +6,10 @@ class PlayersController < ApplicationController
   end #new
 
   def create
-    @player = Player.create player_params
+    @player = Player.create(
+      name: params[:name],
+      number: params[:number],
+    )
   end #create
 
   def index
@@ -23,11 +26,5 @@ class PlayersController < ApplicationController
   end
 
   def destroy
-  end
-
-  private
-
-  def player_params
-    params.require(:player).permit(:name, :number)
   end
 end # PlayersController
