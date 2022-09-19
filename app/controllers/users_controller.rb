@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user
+
+  def current
+    render json: current_user
+  end
+
   def new
     @user = User.new
   end
 
   def create
     @user = User.create user_params
-    
+
     @user.save
     if @user.persisted?
       session[:user_id] = @user.id
@@ -31,8 +37,10 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
   private
+
   def user_params
-  params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end
