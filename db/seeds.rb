@@ -1,7 +1,77 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+################### SEED PLAYERS #####################
+
+Player.destroy_all
+
+Player.create!(
+  name: "Lance Franklin",
+  number: 23,
+)
+Player.create!(
+  name: "Luke Hodge",
+  number: 15,
+)
+Player.create!(
+  name: "Cyril Rioli",
+  number: 33,
+)
+puts "#{Player.count} Players created"
+
+#################### SEED STATS ########################
+
+Stat.destroy_all
+
+Stat.create!(
+  name: "Kicks",
+  count: 25,
+)
+Stat.create!(
+  name: "Hanballs",
+  count: 4,
+)
+Stat.create!(
+  name: "Goals",
+  count: 1,
+)
+
+puts "#{Stat.count} Stats created"
+
+#################### SEED TEAMS ########################
+
+Team.destroy_all
+
+Team.create! name: "Hawthorn"
+Team.create! name: "Richmond"
+Team.create! name: "Sydney"
+Team.create! name: "Adelaide"
+
+puts "#{Team.count} Teams created."
+
+#################### SEED MATCHES #######################
+
+Match.destroy_all
+Match.create!(
+  date: Date.parse("September 10, 2022"),
+  ground: "MCG",
+  start: Time.parse("2:00pm"),
+  finish: Time.parse("5:00pm"),
+  home_score: 42,
+  away_score: 42,
+)
+Match.create!(
+  date: Date.parse("September 3, 2022"),
+  ground: "MCG",
+  start: Time.parse("2:00pm"),
+  finish: Time.parse("5:00pm"),
+  home_score: 118,
+  away_score: 102,
+)
+Match.create!(
+  date: Date.parse("September 10, 2022"),
+  ground: "SCG",
+  start: Time.parse("4:00pm"),
+  finish: Time.parse("7:00pm"),
+  home_score: 56,
+  away_score: 102,
+)
+# .strftime("%H:%M")
+puts "#{Match.count} Matches created."
