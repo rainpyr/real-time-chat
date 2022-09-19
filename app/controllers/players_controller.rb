@@ -1,11 +1,16 @@
 class PlayersController < ApplicationController
+  before_action :authenticate_user
+
   def new
-  end
+    @player = Player.new
+  end #new
 
   def create
-  end
+    @player = Player.create player_params
+  end #create
 
   def index
+    render json: Player.all
   end
 
   def show
@@ -19,4 +24,10 @@ class PlayersController < ApplicationController
 
   def destroy
   end
-end
+
+  private
+
+  def player_params
+    params.require(:player).permit(:name, :number)
+  end
+end # PlayersController
