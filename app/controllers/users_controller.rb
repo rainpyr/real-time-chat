@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user
+  # check that we have the jwt token in the axios request header (except for create user)
+  before_action :authenticate_user, except: [:create]
+  # turn off default rails checkingany time you handle a post request
+  skip_before_action :verify_authenticity_token, raise: false
 
   def current
     render json: current_user
@@ -14,9 +17,11 @@ class UsersController < ApplicationController
 
     @user.save
     if @user.persisted?
+      # TODO: add knock login here
       session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else
+      # TODO: render json (make this an api)
       render :new
     end
   end
