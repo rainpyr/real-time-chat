@@ -1,8 +1,10 @@
 class ChatsController < ApplicationController
-
+  skip_before_action :verify_authenticity_token, raise: false
   def index
+    # headers['Access-Control-Allow-Origin'] = '*'
     @chat = Chat.new
     @chats = Chat.all
+    render json: @chats, include: [:messages, :users]
   end
 
   def new
@@ -41,7 +43,16 @@ class ChatsController < ApplicationController
   def show
     @chat = Chat.find_by(slug: params[:slug])
     @message = Message.new
+    render json: @chat, include: [:messages, :users]
    
+  end
+
+  def individual_chatroom
+    
+
+    @individual_chatroom = Chat.where topic: params[:topic]
+
+    render json: @individual_chatroom, include: [:users, :messages]
   end
 
   private
