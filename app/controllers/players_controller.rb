@@ -28,8 +28,14 @@ class PlayersController < ApplicationController
   end
 
   def update
+    player = Player.find params[:id]
+    player.update(
+      name: params[:name],
+      number: params[:number],
+    )
   end
 
   def destroy
+    Player.destroy params[:id]
   end
 end # PlayersController
