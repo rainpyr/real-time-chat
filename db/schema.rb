@@ -76,4 +76,5 @@ ActiveRecord::Schema.define(version: 2022_09_19_044218) do
     t.text "password"
     t.text "password_digest"
   end
+
 end
