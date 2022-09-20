@@ -48,7 +48,7 @@ Stat.create!(
   count: 25,
 )
 Stat.create!(
-  name: "Hanballs",
+  name: "Handballs",
   count: 4,
 )
 Stat.create!(
