@@ -11,6 +11,7 @@ class PlayersController < ApplicationController
       name: params[:name],
       number: params[:number],
     )
+    render json: @player
   end #create
 
   def index
