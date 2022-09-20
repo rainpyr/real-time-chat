@@ -57,3 +57,5 @@ gem 'pry-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'turbolinks', '~> 5.x'
+
+gem 'rack-cors'
