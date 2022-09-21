@@ -15,10 +15,11 @@ Rails.application.routes.draw do
 
   resources :chats, param: :slug
   resources :messages
+  resources :players, :teams
 
-  get '/chats/:id' => 'chats#individual_chatroom'
-  post '/chats' => 'chats#create' 
-  
+  get "/chats/:id" => "chats#individual_chatroom"
+  post "/chats" => "chats#create"
+
   # Serve websocket cable requests in-process
   mount ActionCable.server => "/cable"
 end
