@@ -1,8 +1,8 @@
 class MessagesController < ApplicationController
-
+  skip_before_action :verify_authenticity_token, raise: false
   def index
-    # headers['Access-Control-Allow-Origin'] = '*'
-    # render json: Message.all.reverse
+    
+    # render json: Message.all.revejwinger@ga.comrse
     
   end
   def create
@@ -15,11 +15,11 @@ class MessagesController < ApplicationController
       head :ok
     end
     
-    # if message.persisted?
-    #   render json: message
-    # else
-    #   render json: {error: 'couldn't create secret}, status 422
-    # end
+    if message.persisted?
+      render json: message
+    else
+      render json: {error: 'couldn't create secret}, status 422
+    end
   end
 
   def show
