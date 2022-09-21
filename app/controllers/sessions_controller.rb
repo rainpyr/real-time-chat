@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: [:destroy]
+    # skip_before_action :verify_authenticity_token, only: [:destroy]
     
     def new
       @user = User.new

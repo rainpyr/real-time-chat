@@ -1,5 +1,7 @@
 class ChatsController < ApplicationController
-  skip_before_action :verify_authenticity_token, raise: false
+  # before_action :authenticate_user
+  # skip_before_action :verify_authenticity_token, raise: false
+
   def index
     # headers['Access-Control-Allow-Origin'] = '*'
     @chat = Chat.new
@@ -8,9 +10,9 @@ class ChatsController < ApplicationController
   end
 
   def new
-  #   if request.referrer.split("/").last == "chatrooms"
-  #     flash[:notice] = nil
-  #   end
+    #   if request.referrer.split("/").last == "chatrooms"
+    #     flash[:notice] = nil
+    #   end
     @chat = Chat.new
   end
 
@@ -27,9 +29,9 @@ class ChatsController < ApplicationController
       end
     else
       respond_to do |format|
-        flash[:notice] = {error: ["a chatroom with this topic already exists"]}
+        flash[:notice] = { error: ["a chatroom with this topic already exists"] }
         format.html { redirect_to new_chat_path }
-        format.js { render template: 'chat/chat_error.js.erb'} 
+        format.js { render template: "chat/chat_error.js.erb" }
       end
     end
   end
@@ -44,12 +46,9 @@ class ChatsController < ApplicationController
     @chat = Chat.find_by(slug: params[:slug])
     @message = Message.new
     render json: @chat, include: [:messages, :users]
-   
   end
 
   def individual_chatroom
-    
-
     @individual_chatroom = Chat.where topic: params[:topic]
 
     render json: @individual_chatroom, include: [:users, :messages]
@@ -57,7 +56,7 @@ class ChatsController < ApplicationController
 
   private
 
-    def chat_params
-      params.require(:chat).permit(:topic, :user_id)
-    end
+  def chat_params
+    params.require(:chat).permit(:topic, :user_id)
+  end
 end
