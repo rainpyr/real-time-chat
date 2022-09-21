@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :chats, param: :slug
   resources :messages
-  resources :players, :teams
+  resources :players, :teams, :stats
 
   get "/chats/:id" => "chats#individual_chatroom"
   post "/chats" => "chats#create"
