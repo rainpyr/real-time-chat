@@ -1,16 +1,16 @@
 class ChatRoomsChannel < ApplicationCable::Channel
-    # def subscribed
-    # stream_from "chats_#{params['chat_id']}_channel"
-    # end
-    #    def unsubscribed
-    # Stop_all_streams
-    # end
-    #    def send_message(data)
-    # message = current_user.messages.create(body: data['body'], chat_room_id: data['chat_room_id'])
-    # if message.errors.present?
-    # transmit({type: "chat_rooms", data: message.error.full_messages})
-    # else
-    # MessageBroadcastJob.perform_later(message.id)
-    # end
-    #    end
+    def subscribed
+        
+        @chat = Chat.find_by(id: params[:chat])
+        stream_for @chat
+      end
+    
+      # the second argument to broadcast_to matches the information that I am getting from the frontend, and passing from the MessagesController create action
+      # def received(data)
+      #   RoomsChannel.broadcast_to(@room, {room: @room, users: @room.users, messages: @room.messages})
+      # end
+    
+      def unsubscribed
+        # any cleanup needed when channel is unsubscribed
+      end
     end

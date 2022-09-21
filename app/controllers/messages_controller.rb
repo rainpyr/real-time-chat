@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 
   def index
     # headers['Access-Control-Allow-Origin'] = '*'
-    # render json: Message.all.reverse
+    render json: Message.all
     
   end
   def create
@@ -14,11 +14,13 @@ class MessagesController < ApplicationController
         user: message.user.username
       head :ok
     end
+
+    render json: message
     
     # if message.persisted?
     #   render json: message
     # else
-    #   render json: {error: 'couldn't create secret}, status 422
+    #   render json: {error: "couldn't create message"}, status 422
     # end
   end
 
