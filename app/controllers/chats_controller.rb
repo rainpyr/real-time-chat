@@ -1,6 +1,6 @@
 class ChatsController < ApplicationController
   # before_action :authenticate_user
-  # skip_before_action :verify_authenticity_token, raise: false
+  skip_before_action :verify_authenticity_token, raise: false
 
   def index
     # headers['Access-Control-Allow-Origin'] = '*'
