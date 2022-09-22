@@ -1,5 +1,4 @@
 {
   "name": "chatroom-test",
-  "private": true,
-  "dependencies": {}
+  "private": true
 }
