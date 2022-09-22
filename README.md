@@ -17,7 +17,6 @@ Software Engineer Immersive course group project 2 - built during week 9 of 12 a
 Our task- build a full web app from front to back.
 A project full of firsts! This was our first go at version control in a team setting, managing git branches and merge conflicts on the fly. Our first time attempting realtime data transfer via websockets. It was also a first time getting a login to work from a react front end to a rails backend.
 
-
 ### Main features
 Login/logout - React FrontEnd to Rails Backend using knock and jwt
 Teams Players Stats - Create Read Update and Delete
@@ -33,6 +32,27 @@ rails 5.2.8
 jwt
 knock
 rack-cors
+
+### Deploy locally
+
+$ `bundle install`
+
+$ `rails db:create`
+
+$ `rails db:migrate`
+
+$ `rails db:seed`
+
+$ `rails server`
+
+Then start the frontend (details here -> [Link](https://github.com/deepabst/sideline-app-frontend) )
+
+### Production Deployment - Dev Ops
+
+$ `git push heroku main` - deploy latest changes
+
+$ `heroku logs -tail` - check production env logs
+
 
 ### Known bugs
 websockets connection not working yet
