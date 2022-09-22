@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get "/chats/:id" => "chats#individual_chatroom"
   post "/chats" => "chats#create"
 
+  # post '/messages' => 'messages#create'
+  
   # Serve websocket cable requests in-process
   mount ActionCable.server => "/cable"
 end
