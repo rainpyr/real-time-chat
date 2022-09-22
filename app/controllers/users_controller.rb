@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # check that we have the jwt token in the axios request header (except for create user)
   before_action :authenticate_user, except: [:create]
   # turn off default rails checking any time you handle a post request
-  # skip_before_action :verify_authenticity_token, raise: false
+  skip_before_action :verify_authenticity_token, raise: false
 
   def current
     render json: current_user
