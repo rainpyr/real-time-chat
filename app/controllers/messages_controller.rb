@@ -9,18 +9,19 @@ class MessagesController < ApplicationController
     message = Message.new(message_params)
     message.user = current_user
     if message.save
-      ActionCable.server.broadcast 'messages',
+      # todo use MessagesChannel once we subscribed
+      ActionCable.server.broadcast "chats_#{params[:message][:chat_id]}",
         message: message.content,
         user: message.user.username
-      head :ok
+      render json: message
+    else
+      render json: {error: "couldn't create message"}, status: 422
     end
 
-    render json: message
     
     # if message.persisted?
     #   render json: message
     # else
-    #   render json: {error: "couldn't create message"}, status 422
     # end
   end
 

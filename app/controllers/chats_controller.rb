@@ -5,7 +5,7 @@ class ChatsController < ApplicationController
   def index
     # headers['Access-Control-Allow-Origin'] = '*'
     @chat = Chat.new
-    @chats = Chat.all
+    @chats = Chat.includes(:messages, :users).all
     render json: @chats, include: [:messages, :users]
   end
 
